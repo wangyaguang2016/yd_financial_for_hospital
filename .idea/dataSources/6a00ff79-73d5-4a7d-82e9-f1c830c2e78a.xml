@@ -1,0 +1,1249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.1">
+    <root id="1"/>
+    <schema id="2" parent="1" name="information_schema">
+      <Current>1</Current>
+    </schema>
+    <schema id="3" parent="1" name="mysql"/>
+    <schema id="4" parent="1" name="performance_schema"/>
+    <schema id="5" parent="1" name="physicaldb"/>
+    <schema id="6" parent="1" name="sys"/>
+    <schema id="7" parent="1" name="yd_financial">
+      <Visible>1</Visible>
+    </schema>
+    <table id="8" parent="7" name="m_permission">
+      <Comment>财务对账医院端权限表</Comment>
+    </table>
+    <table id="9" parent="7" name="m_role">
+      <Comment>财务对账医院端角色表</Comment>
+    </table>
+    <table id="10" parent="7" name="m_user">
+      <Comment>财务对账医院端用户表</Comment>
+    </table>
+    <table id="11" parent="7" name="yd_hospital_info"/>
+    <table id="12" parent="7" name="yd_manual_task"/>
+    <table id="13" parent="7" name="yd_menu"/>
+    <table id="14" parent="7" name="yd_privilege"/>
+    <table id="15" parent="7" name="yd_quartz_log"/>
+    <table id="16" parent="7" name="yd_quartz_log_detail"/>
+    <table id="17" parent="7" name="yd_report"/>
+    <table id="18" parent="7" name="yd_role"/>
+    <table id="19" parent="7" name="yd_role_privilege_menu"/>
+    <table id="20" parent="7" name="yd_statistical_chart"/>
+    <table id="21" parent="7" name="yd_total_amount"/>
+    <table id="22" parent="7" name="yd_trade"/>
+    <table id="23" parent="7" name="yd_trade_underline"/>
+    <table id="24" parent="7" name="yd_trigger"/>
+    <table id="25" parent="7" name="yd_trigger_script"/>
+    <table id="26" parent="7" name="yd_user"/>
+    <table id="27" parent="7" name="yd_user_role"/>
+    <view id="28" parent="7" name="aaa">
+      <Comment>VIEW</Comment>
+    </view>
+    <view id="29" parent="7" name="bbb">
+      <Comment>VIEW</Comment>
+    </view>
+    <routine id="30" parent="7" name="a">
+      <RoutineKind>procedure</RoutineKind>
+    </routine>
+    <column id="31" parent="8" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="32" parent="8" name="permission_name">
+      <Position>2</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="33" parent="8" name="description">
+      <Position>3</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="34" parent="8" name="url">
+      <Position>4</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="35" parent="8" name="is_menu">
+      <Position>5</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="36" parent="8" name="parent_id">
+      <Position>6</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="37" parent="8" name="role_id">
+      <Position>7</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="38" parent="8" name="create_time">
+      <Position>8</Position>
+      <DataType>timestamp|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+    </column>
+    <column id="39" parent="8" name="user_type">
+      <Position>9</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="40" parent="8" name="update_time">
+      <Position>10</Position>
+      <DataType>timestamp|0</DataType>
+    </column>
+    <key id="41" parent="8" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="42" parent="9" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="43" parent="9" name="role_name">
+      <Position>2</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="44" parent="9" name="description">
+      <Position>3</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="45" parent="9" name="create_time">
+      <Position>4</Position>
+      <DataType>timestamp|0</DataType>
+    </column>
+    <column id="46" parent="9" name="update_time">
+      <Position>5</Position>
+      <DataType>timestamp|0</DataType>
+    </column>
+    <column id="47" parent="9" name="del_status">
+      <Position>6</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="48" parent="9" name="user_id">
+      <Position>7</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="49" parent="9" name="user_type">
+      <Position>8</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <key id="50" parent="9" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="51" parent="10" name="user_id">
+      <Position>2</Position>
+      <DataType>varchar(64)|0</DataType>
+    </column>
+    <column id="52" parent="10" name="role_id">
+      <Position>3</Position>
+      <DataType>varchar(64)|0</DataType>
+    </column>
+    <column id="53" parent="10" name="name">
+      <Position>4</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="54" parent="10" name="role_name">
+      <Position>5</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="55" parent="10" name="birth">
+      <Position>6</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="56" parent="10" name="sex">
+      <Position>7</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="57" parent="10" name="id_no">
+      <Position>8</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="58" parent="10" name="phone">
+      <Position>9</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="59" parent="10" name="password">
+      <Position>10</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="60" parent="10" name="user_type">
+      <Position>11</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="61" parent="10" name="del_status">
+      <Position>12</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="62" parent="10" name="create_time">
+      <Position>13</Position>
+      <DataType>timestamp|0</DataType>
+    </column>
+    <column id="63" parent="10" name="update_time">
+      <Position>14</Position>
+      <DataType>timestamp|0</DataType>
+    </column>
+    <column id="64" parent="10" name="login_time">
+      <Position>15</Position>
+      <DataType>timestamp|0</DataType>
+    </column>
+    <column id="65" parent="10" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="66" parent="10" name="hospital_id">
+      <Position>16</Position>
+      <DataType>varchar(10)|0</DataType>
+    </column>
+    <key id="67" parent="10" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="68" parent="11" name="ID">
+      <Position>1</Position>
+      <DataType>int(32)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="69" parent="11" name="HOSPITAL_CODE">
+      <Position>2</Position>
+      <Comment>医院编码</Comment>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="70" parent="11" name="HOSPITAL_NAME">
+      <Position>3</Position>
+      <Comment>医院名称</Comment>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="71" parent="11" name="LINKMAN_NAME">
+      <Position>4</Position>
+      <Comment>医院联系人名称</Comment>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="72" parent="11" name="LINKMAN_EMAIL">
+      <Position>5</Position>
+      <Comment>医院联系人邮箱</Comment>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="73" parent="11" name="LINKMAN_PHONE">
+      <Position>6</Position>
+      <Comment>联系人电话</Comment>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="74" parent="11" name="EX1">
+      <Position>7</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="75" parent="11" name="EX2">
+      <Position>8</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="76" parent="11" name="EX3">
+      <Position>9</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="77" parent="11" name="EX4">
+      <Position>10</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="78" parent="11" name="EX5">
+      <Position>11</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <key id="79" parent="11" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>ID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="80" parent="12" name="ID">
+      <Position>1</Position>
+      <DataType>int(32)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="81" parent="12" name="START_TIME">
+      <Position>2</Position>
+      <Comment>开始时间</Comment>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="82" parent="12" name="END_TIME">
+      <Position>3</Position>
+      <Comment>结束时间</Comment>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="83" parent="12" name="DESCRIPTION">
+      <Position>4</Position>
+      <Comment>描述</Comment>
+      <DataType>varchar(1024)|0</DataType>
+    </column>
+    <column id="84" parent="12" name="STATE">
+      <Position>5</Position>
+      <Comment>状态</Comment>
+      <DataType>varchar(64)|0</DataType>
+    </column>
+    <column id="85" parent="12" name="EXT1">
+      <Position>6</Position>
+      <Comment>扩展字段1</Comment>
+      <DataType>varchar(128)|0</DataType>
+    </column>
+    <column id="86" parent="12" name="EXT2">
+      <Position>7</Position>
+      <Comment>扩展字段2</Comment>
+      <DataType>varchar(128)|0</DataType>
+    </column>
+    <column id="87" parent="12" name="EXT3">
+      <Position>8</Position>
+      <Comment>扩展字段3</Comment>
+      <DataType>varchar(128)|0</DataType>
+    </column>
+    <column id="88" parent="12" name="EXT4">
+      <Position>9</Position>
+      <Comment>扩展字段4</Comment>
+      <DataType>varchar(128)|0</DataType>
+    </column>
+    <column id="89" parent="12" name="EXT5">
+      <Position>10</Position>
+      <Comment>扩展字段5</Comment>
+      <DataType>varchar(128)|0</DataType>
+    </column>
+    <column id="90" parent="12" name="TRIGGER_ID">
+      <Position>11</Position>
+      <Comment>任务ID</Comment>
+      <DataType>int(32)|0</DataType>
+    </column>
+    <key id="91" parent="12" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>ID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="92" parent="13" name="ID">
+      <Position>1</Position>
+      <DataType>int(32)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="93" parent="13" name="PID">
+      <Position>2</Position>
+      <DataType>int(32)|0</DataType>
+    </column>
+    <column id="94" parent="13" name="MENU_ID">
+      <Position>3</Position>
+      <DataType>int(32)|0</DataType>
+    </column>
+    <column id="95" parent="13" name="NAME">
+      <Position>4</Position>
+      <DataType>varchar(64)|0</DataType>
+    </column>
+    <column id="96" parent="13" name="IMAGE">
+      <Position>5</Position>
+      <DataType>varchar(64)|0</DataType>
+    </column>
+    <column id="97" parent="13" name="URL">
+      <Position>6</Position>
+      <DataType>varchar(256)|0</DataType>
+    </column>
+    <column id="98" parent="13" name="DESCRIPTION">
+      <Position>7</Position>
+      <DataType>varchar(128)|0</DataType>
+    </column>
+    <key id="99" parent="13" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>ID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="100" parent="14" name="ID">
+      <Position>1</Position>
+      <DataType>int(32)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="101" parent="14" name="MENU_ID">
+      <Position>2</Position>
+      <DataType>int(32)|0</DataType>
+    </column>
+    <column id="102" parent="14" name="MENU_NAME">
+      <Position>3</Position>
+      <DataType>varchar(64)|0</DataType>
+    </column>
+    <column id="103" parent="14" name="DECRIPTION">
+      <Position>4</Position>
+      <DataType>varchar(64)|0</DataType>
+    </column>
+    <column id="104" parent="14" name="NAME">
+      <Position>5</Position>
+      <DataType>varchar(64)|0</DataType>
+    </column>
+    <key id="105" parent="14" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>ID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="106" parent="15" name="ID">
+      <Position>1</Position>
+      <DataType>int(32)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="107" parent="15" name="JOB_NAME">
+      <Position>2</Position>
+      <DataType>varchar(64)|0</DataType>
+    </column>
+    <column id="108" parent="15" name="JOB_STATUS">
+      <Position>3</Position>
+      <DataType>varchar(32)|0</DataType>
+    </column>
+    <column id="109" parent="15" name="START_TIME">
+      <Position>4</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="110" parent="15" name="END_TIME">
+      <Position>5</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="111" parent="15" name="JOB_AUTO">
+      <Position>6</Position>
+      <DataType>varchar(6)|0</DataType>
+    </column>
+    <column id="112" parent="15" name="TRIGGER_ID">
+      <Position>7</Position>
+      <DataType>int(32)|0</DataType>
+    </column>
+    <column id="113" parent="15" name="JOB_DESCRIPTION">
+      <Position>8</Position>
+      <DataType>longtext|0</DataType>
+    </column>
+    <key id="114" parent="15" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>ID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="115" parent="16" name="ID">
+      <Position>1</Position>
+      <DataType>int(32)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="116" parent="16" name="STATUS">
+      <Position>2</Position>
+      <DataType>varchar(64)|0</DataType>
+    </column>
+    <column id="117" parent="16" name="STATE">
+      <Position>3</Position>
+      <DataType>varchar(64)|0</DataType>
+    </column>
+    <column id="118" parent="16" name="TIME">
+      <Position>4</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="119" parent="16" name="QUARTZ_ID">
+      <Position>5</Position>
+      <DataType>int(32)|0</DataType>
+    </column>
+    <column id="120" parent="16" name="DECRIPTION">
+      <Position>6</Position>
+      <DataType>longtext|0</DataType>
+    </column>
+    <key id="121" parent="16" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>ID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="122" parent="17" name="ID">
+      <Position>1</Position>
+      <Comment>唯一ID</Comment>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="123" parent="17" name="HOSPTIAL_NAME">
+      <Position>2</Position>
+      <Comment>医院名称</Comment>
+      <DataType>varchar(256)|0</DataType>
+    </column>
+    <column id="124" parent="17" name="HOSPTAIL_ID">
+      <Position>3</Position>
+      <Comment>医院ID</Comment>
+      <DataType>varchar(256)|0</DataType>
+    </column>
+    <column id="125" parent="17" name="REPORT_DATE">
+      <Position>4</Position>
+      <Comment>报表生成时间</Comment>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="126" parent="17" name="REPORT_NAME">
+      <Position>5</Position>
+      <Comment>报表名称</Comment>
+      <DataType>varchar(256)|0</DataType>
+    </column>
+    <column id="127" parent="17" name="DESCRIPTION">
+      <Position>6</Position>
+      <Comment>报表描述</Comment>
+      <DataType>varchar(1024)|0</DataType>
+    </column>
+    <column id="128" parent="17" name="EXT1">
+      <Position>7</Position>
+      <Comment>报表生成年份</Comment>
+      <DataType>varchar(256)|0</DataType>
+    </column>
+    <column id="129" parent="17" name="EXT2">
+      <Position>8</Position>
+      <Comment>报表生成月份</Comment>
+      <DataType>varchar(256)|0</DataType>
+    </column>
+    <column id="130" parent="17" name="EXT3">
+      <Position>9</Position>
+      <Comment>扩展字段</Comment>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="131" parent="17" name="EXT4">
+      <Position>10</Position>
+      <Comment>扩展字段</Comment>
+      <DataType>varchar(256)|0</DataType>
+    </column>
+    <column id="132" parent="17" name="EXT5">
+      <Position>11</Position>
+      <Comment>扩展字段</Comment>
+      <DataType>varchar(256)|0</DataType>
+    </column>
+    <key id="133" parent="17" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>ID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="134" parent="18" name="ID">
+      <Position>1</Position>
+      <DataType>varchar(32)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="135" parent="18" name="ROLE_NAME">
+      <Position>2</Position>
+      <DataType>varchar(64)|0</DataType>
+    </column>
+    <column id="136" parent="18" name="CREATE_TIME">
+      <Position>3</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <key id="137" parent="18" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>ID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="138" parent="19" name="PRIVILEGE_ID">
+      <Position>1</Position>
+      <DataType>int(32)|0</DataType>
+    </column>
+    <column id="139" parent="19" name="ROLE_ID">
+      <Position>2</Position>
+      <DataType>varchar(32)|0</DataType>
+    </column>
+    <column id="140" parent="19" name="MENU_ID">
+      <Position>3</Position>
+      <DataType>int(32)|0</DataType>
+    </column>
+    <column id="141" parent="20" name="ID">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="142" parent="20" name="TIME">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="143" parent="20" name="UP_VISIT_PEOPLE">
+      <Position>3</Position>
+      <Comment>线上就诊人数</Comment>
+      <DataType>varchar(255)|0</DataType>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="144" parent="20" name="DOWN_VISIT_PEOPLE">
+      <Position>4</Position>
+      <Comment>线下就诊人数</Comment>
+      <DataType>varchar(255)|0</DataType>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="145" parent="20" name="UP_AMOUNT">
+      <Position>5</Position>
+      <Comment>线上充值金额</Comment>
+      <DataType>varchar(255)|0</DataType>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="146" parent="20" name="DOWN_AMOUNT">
+      <Position>6</Position>
+      <Comment>线下就诊金额</Comment>
+      <DataType>varchar(255)|0</DataType>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="147" parent="20" name="MONTHS">
+      <Position>7</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="148" parent="20" name="HOSPITAL_NAME">
+      <Position>8</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="149" parent="20" name="HOSPITAL_ID">
+      <Position>9</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="150" parent="20" name="COST_AMOUNT">
+      <Position>10</Position>
+      <Comment>总花费金额</Comment>
+      <DataType>varchar(255)|0</DataType>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="151" parent="20" name="EXT1">
+      <Position>11</Position>
+      <DataType>int(255)|0</DataType>
+    </column>
+    <key id="152" parent="20" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>ID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="153" parent="21" name="ID">
+      <Position>1</Position>
+      <DataType>int(30)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="154" parent="21" name="HOSPTIAL_NAME">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="155" parent="21" name="HOSPTAIL_ID">
+      <Position>3</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="156" parent="21" name="TOTALAMOUNT">
+      <Position>4</Position>
+      <Comment>总金额</Comment>
+      <DataType>varchar(255)|0</DataType>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="157" parent="21" name="COSTAMOUNT">
+      <Position>5</Position>
+      <Comment>总花费金额</Comment>
+      <DataType>varchar(255)|0</DataType>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="158" parent="21" name="UPLINEAMOUNT">
+      <Position>6</Position>
+      <Comment>线上交易金额</Comment>
+      <DataType>varchar(255)|0</DataType>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="159" parent="21" name="UNDERLINEAMOUNT">
+      <Position>7</Position>
+      <Comment>线下交易金额</Comment>
+      <DataType>varchar(255)|0</DataType>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="160" parent="21" name="UPLINEPERSONS">
+      <Position>8</Position>
+      <Comment>线上就诊人数</Comment>
+      <DataType>varchar(255)|0</DataType>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="161" parent="21" name="UNDERLINEPERSONS">
+      <Position>9</Position>
+      <Comment>线下就诊人数</Comment>
+      <DataType>varchar(255)|0</DataType>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="162" parent="21" name="START_TIME">
+      <Position>10</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="163" parent="21" name="END_TIME">
+      <Position>11</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <key id="164" parent="21" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>ID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="165" parent="22" name="ID">
+      <Position>1</Position>
+      <DataType>int(32)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="166" parent="22" name="HOSPTIAL_NAME">
+      <Position>2</Position>
+      <Comment>医院名称</Comment>
+      <DataType>varchar(128)|0</DataType>
+    </column>
+    <column id="167" parent="22" name="HOSPTAIL_ID">
+      <Position>3</Position>
+      <Comment>医院ID</Comment>
+      <DataType>varchar(32)|0</DataType>
+    </column>
+    <column id="168" parent="22" name="PATIENT_NAME">
+      <Position>4</Position>
+      <Comment>患者姓名</Comment>
+      <DataType>varchar(32)|0</DataType>
+    </column>
+    <column id="169" parent="22" name="CARD_NUM">
+      <Position>5</Position>
+      <Comment>就诊卡号</Comment>
+      <DataType>varchar(64)|0</DataType>
+    </column>
+    <column id="170" parent="22" name="OUTPATIENT_AND_HOSPTIAL_DEP">
+      <Position>6</Position>
+      <Comment>门诊部/住院部</Comment>
+      <DataType>varchar(32)|0</DataType>
+    </column>
+    <column id="171" parent="22" name="COMSUMPTION_PROJECT">
+      <Position>7</Position>
+      <Comment>消费项目</Comment>
+      <DataType>varchar(32)|0</DataType>
+    </column>
+    <column id="172" parent="22" name="HOSPTIAL_NUM">
+      <Position>8</Position>
+      <Comment>住院号</Comment>
+      <DataType>varchar(32)|0</DataType>
+    </column>
+    <column id="173" parent="22" name="TRADE_MONEY">
+      <Position>9</Position>
+      <Comment>交易金额</Comment>
+      <DataType>decimal(65,2)|0</DataType>
+    </column>
+    <column id="174" parent="22" name="ORDER_NUM">
+      <Position>10</Position>
+      <Comment>订单号</Comment>
+      <DataType>varchar(32)|0</DataType>
+    </column>
+    <column id="175" parent="22" name="TRADE_TYPE">
+      <Position>11</Position>
+      <Comment>交易类型</Comment>
+      <DataType>varchar(16)|0</DataType>
+    </column>
+    <column id="176" parent="22" name="TRADE_TIME">
+      <Position>12</Position>
+      <Comment>交易时间</Comment>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="177" parent="22" name="TRADE_SOURCE">
+      <Position>13</Position>
+      <Comment>交易来源</Comment>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="178" parent="22" name="SOURCE_ID">
+      <Position>14</Position>
+      <Comment>源ID</Comment>
+      <DataType>varchar(32)|0</DataType>
+    </column>
+    <column id="179" parent="22" name="STATES">
+      <Position>15</Position>
+      <Comment>状态(成功，失败)</Comment>
+      <DataType>varchar(16)|0</DataType>
+    </column>
+    <column id="180" parent="22" name="AGE">
+      <Position>16</Position>
+      <Comment>患者年龄</Comment>
+      <DataType>int(255)|0</DataType>
+    </column>
+    <column id="181" parent="22" name="PHONE">
+      <Position>17</Position>
+      <Comment>患者电话</Comment>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="182" parent="22" name="ADDRESS">
+      <Position>18</Position>
+      <Comment>患者住址</Comment>
+      <DataType>varchar(60)|0</DataType>
+    </column>
+    <column id="183" parent="22" name="DIAGNOSIS">
+      <Position>19</Position>
+      <Comment>诊断结果</Comment>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="184" parent="22" name="GENDER">
+      <Position>20</Position>
+      <Comment>性别</Comment>
+      <DataType>varchar(10)|0</DataType>
+    </column>
+    <column id="185" parent="22" name="UNDERLINEAMOUNT">
+      <Position>21</Position>
+      <Comment>线下充值</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="186" parent="22" name="UPLINEAMOUNT">
+      <Position>22</Position>
+      <Comment>线上充值</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="187" parent="22" name="UPLINR_OR_UNDERLINE">
+      <Position>23</Position>
+      <Comment>线上或线下</Comment>
+      <DataType>varchar(10)|0</DataType>
+    </column>
+    <column id="188" parent="22" name="PATIENT_ID">
+      <Position>24</Position>
+      <Comment>医院患者ID</Comment>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="189" parent="22" name="ID_NO">
+      <Position>25</Position>
+      <Comment>患者身份证号</Comment>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="190" parent="22" name="RECEIPT_NO">
+      <Position>26</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="191" parent="22" name="MONTH">
+      <Position>27</Position>
+      <DataType>varchar(10)|0</DataType>
+    </column>
+    <column id="192" parent="22" name="YEAR">
+      <Position>28</Position>
+      <DataType>varchar(10)|0</DataType>
+    </column>
+    <column id="193" parent="22" name="TYPE">
+      <Position>29</Position>
+      <DataType>varchar(5)|0</DataType>
+    </column>
+    <index id="194" parent="22" name="HOSPTAIL_ID">
+      <ColNames>HOSPTAIL_ID
+TRADE_MONEY
+TRADE_TYPE
+STATES</ColNames>
+    </index>
+    <index id="195" parent="22" name="HOSPTAIL_ID_2">
+      <ColNames>HOSPTAIL_ID
+CARD_NUM
+TRADE_TYPE
+TRADE_TIME
+STATES</ColNames>
+    </index>
+    <index id="196" parent="22" name="HOSPTAIL_ID_3">
+      <ColNames>HOSPTAIL_ID
+CARD_NUM
+TRADE_TIME
+STATES</ColNames>
+    </index>
+    <index id="197" parent="22" name="HOSPTIAL_NAME">
+      <ColNames>HOSPTIAL_NAME
+HOSPTAIL_ID
+TRADE_TIME</ColNames>
+    </index>
+    <key id="198" parent="22" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>ID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="199" parent="23" name="ID">
+      <Position>1</Position>
+      <DataType>int(32)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="200" parent="23" name="HOSPTIAL_NAME">
+      <Position>2</Position>
+      <Comment>医院名称</Comment>
+      <DataType>varchar(128)|0</DataType>
+    </column>
+    <column id="201" parent="23" name="HOSPTAIL_ID">
+      <Position>3</Position>
+      <Comment>医院ID</Comment>
+      <DataType>varchar(32)|0</DataType>
+    </column>
+    <column id="202" parent="23" name="PATIENT_NAME">
+      <Position>4</Position>
+      <Comment>患者姓名</Comment>
+      <DataType>varchar(32)|0</DataType>
+    </column>
+    <column id="203" parent="23" name="CARD_NUM">
+      <Position>5</Position>
+      <Comment>就诊卡号</Comment>
+      <DataType>varchar(64)|0</DataType>
+    </column>
+    <column id="204" parent="23" name="OUTPATIENT_AND_HOSPTIAL_DEP">
+      <Position>6</Position>
+      <Comment>门诊部/住院部</Comment>
+      <DataType>varchar(32)|0</DataType>
+    </column>
+    <column id="205" parent="23" name="COMSUMPTION_PROJECT">
+      <Position>7</Position>
+      <Comment>消费项目</Comment>
+      <DataType>varchar(32)|0</DataType>
+    </column>
+    <column id="206" parent="23" name="HOSPTIAL_NUM">
+      <Position>8</Position>
+      <Comment>住院号</Comment>
+      <DataType>varchar(32)|0</DataType>
+    </column>
+    <column id="207" parent="23" name="TRADE_MONEY">
+      <Position>9</Position>
+      <Comment>交易金额</Comment>
+      <DataType>decimal(65,2)|0</DataType>
+    </column>
+    <column id="208" parent="23" name="ORDER_NUM">
+      <Position>10</Position>
+      <Comment>订单号</Comment>
+      <DataType>varchar(32)|0</DataType>
+    </column>
+    <column id="209" parent="23" name="TRADE_TYPE">
+      <Position>11</Position>
+      <Comment>交易类型</Comment>
+      <DataType>varchar(16)|0</DataType>
+    </column>
+    <column id="210" parent="23" name="TRADE_TIME">
+      <Position>12</Position>
+      <Comment>交易时间</Comment>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="211" parent="23" name="TRADE_SOURCE">
+      <Position>13</Position>
+      <Comment>交易来源</Comment>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="212" parent="23" name="SOURCE_ID">
+      <Position>14</Position>
+      <Comment>源ID</Comment>
+      <DataType>varchar(32)|0</DataType>
+    </column>
+    <column id="213" parent="23" name="STATES">
+      <Position>15</Position>
+      <Comment>状态(成功，失败)</Comment>
+      <DataType>varchar(16)|0</DataType>
+    </column>
+    <column id="214" parent="23" name="AGE">
+      <Position>16</Position>
+      <Comment>患者年龄</Comment>
+      <DataType>int(255)|0</DataType>
+    </column>
+    <column id="215" parent="23" name="PHONE">
+      <Position>17</Position>
+      <Comment>患者电话</Comment>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="216" parent="23" name="ADDRESS">
+      <Position>18</Position>
+      <Comment>患者住址</Comment>
+      <DataType>varchar(60)|0</DataType>
+    </column>
+    <column id="217" parent="23" name="DIAGNOSIS">
+      <Position>19</Position>
+      <Comment>诊断结果</Comment>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="218" parent="23" name="GENDER">
+      <Position>20</Position>
+      <Comment>性别</Comment>
+      <DataType>varchar(10)|0</DataType>
+    </column>
+    <column id="219" parent="23" name="UNDERLINEAMOUNT">
+      <Position>21</Position>
+      <Comment>线下充值</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="220" parent="23" name="UPLINEAMOUNT">
+      <Position>22</Position>
+      <Comment>线上充值</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="221" parent="23" name="UPLINR_OR_UNDERLINE">
+      <Position>23</Position>
+      <Comment>线上或线下</Comment>
+      <DataType>varchar(10)|0</DataType>
+    </column>
+    <column id="222" parent="23" name="PATIENT_ID">
+      <Position>24</Position>
+      <Comment>医院患者ID</Comment>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="223" parent="23" name="ID_NO">
+      <Position>25</Position>
+      <Comment>患者身份证号</Comment>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="224" parent="23" name="RECEIPT_NO">
+      <Position>26</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="225" parent="23" name="MONTH">
+      <Position>27</Position>
+      <DataType>varchar(10)|0</DataType>
+    </column>
+    <column id="226" parent="23" name="YEAR">
+      <Position>28</Position>
+      <DataType>varchar(10)|0</DataType>
+    </column>
+    <index id="227" parent="23" name="HOSPTAIL_ID">
+      <ColNames>HOSPTAIL_ID
+CARD_NUM
+TRADE_TIME</ColNames>
+    </index>
+    <index id="228" parent="23" name="HOSPTAIL_ID_2">
+      <ColNames>HOSPTAIL_ID
+TRADE_MONEY
+TRADE_TYPE
+TRADE_TIME</ColNames>
+    </index>
+    <index id="229" parent="23" name="HOSPTAIL_ID_3">
+      <ColNames>HOSPTAIL_ID
+CARD_NUM
+TRADE_TYPE</ColNames>
+    </index>
+    <index id="230" parent="23" name="HOSPTAIL_ID_4">
+      <ColNames>HOSPTAIL_ID
+TRADE_MONEY
+TRADE_TYPE</ColNames>
+    </index>
+    <index id="231" parent="23" name="HOSPTAIL_ID_5">
+      <ColNames>HOSPTAIL_ID
+CARD_NUM
+TRADE_TYPE
+TRADE_TIME</ColNames>
+    </index>
+    <key id="232" parent="23" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>ID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="233" parent="24" name="ID">
+      <Position>1</Position>
+      <DataType>int(32)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="234" parent="24" name="START_TIME">
+      <Position>2</Position>
+      <Comment>任务开始时间</Comment>
+      <DataType>date|0</DataType>
+    </column>
+    <column id="235" parent="24" name="END_TIME">
+      <Position>3</Position>
+      <Comment>任务结束时间</Comment>
+      <DataType>date|0</DataType>
+    </column>
+    <column id="236" parent="24" name="TRIGGER_NAME">
+      <Position>4</Position>
+      <Comment>触发器名称</Comment>
+      <DataType>varchar(128)|0</DataType>
+    </column>
+    <column id="237" parent="24" name="DESCRIPTION">
+      <Position>5</Position>
+      <Comment>描述</Comment>
+      <DataType>varchar(128)|0</DataType>
+    </column>
+    <column id="238" parent="24" name="JOB_NAME">
+      <Position>6</Position>
+      <Comment>脚本名称</Comment>
+      <DataType>varchar(64)|0</DataType>
+    </column>
+    <column id="239" parent="24" name="PAST_START_TIME">
+      <Position>7</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="240" parent="24" name="LAST_START_TIME">
+      <Position>8</Position>
+      <Comment>最后一次开始时间</Comment>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="241" parent="24" name="LAST_END_TIME">
+      <Position>9</Position>
+      <Comment>最后一次结束时间</Comment>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="242" parent="24" name="CRON">
+      <Position>10</Position>
+      <Comment>cron表达式</Comment>
+      <DataType>varchar(64)|0</DataType>
+    </column>
+    <column id="243" parent="24" name="CONFIG">
+      <Position>11</Position>
+      <Comment>配置参数</Comment>
+      <DataType>varchar(5024)|0</DataType>
+    </column>
+    <column id="244" parent="24" name="PROPS_JSON">
+      <Position>12</Position>
+      <Comment>属性json</Comment>
+      <DataType>varchar(256)|0</DataType>
+    </column>
+    <column id="245" parent="24" name="RUN_TYPE">
+      <Position>13</Position>
+      <Comment>运行类型：0手动，1自动</Comment>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="246" parent="24" name="MOBILE">
+      <Position>14</Position>
+      <Comment>手机号码</Comment>
+      <DataType>varchar(24)|0</DataType>
+    </column>
+    <column id="247" parent="24" name="EMAIL">
+      <Position>15</Position>
+      <Comment>邮箱</Comment>
+      <DataType>varchar(32)|0</DataType>
+    </column>
+    <column id="248" parent="24" name="ENABLED">
+      <Position>16</Position>
+      <Comment>是否启用:N未启用，Y启用</Comment>
+      <DataType>varchar(6)|0</DataType>
+    </column>
+    <column id="249" parent="24" name="STATE">
+      <Position>17</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="250" parent="24" name="SCRIPT_NAME">
+      <Position>18</Position>
+      <Comment>脚本名称</Comment>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="251" parent="24" name="SCRIPT_ID">
+      <Position>19</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <key id="252" parent="24" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>ID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="253" parent="25" name="ID">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="254" parent="25" name="HOSPITAL_CODE">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="255" parent="25" name="HOSPITAL_NAME">
+      <Position>3</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="256" parent="25" name="HOSPITAL_ID">
+      <Position>4</Position>
+      <Comment>医院ID</Comment>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="257" parent="25" name="JOB_NAME">
+      <Position>5</Position>
+      <Comment>脚本</Comment>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="258" parent="25" name="CONFIG">
+      <Position>6</Position>
+      <Comment>脚本参数</Comment>
+      <DataType>varchar(5024)|0</DataType>
+    </column>
+    <column id="259" parent="25" name="SCRIPT_NAME">
+      <Position>7</Position>
+      <Comment>脚本名称</Comment>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="260" parent="25" name="DESCRIPTION">
+      <Position>8</Position>
+      <Comment>描述</Comment>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="261" parent="25" name="CREATE_TIME">
+      <Position>9</Position>
+      <Comment>创建时间</Comment>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="262" parent="25" name="EX1">
+      <Position>10</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="263" parent="25" name="EX2">
+      <Position>11</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="264" parent="25" name="EX3">
+      <Position>12</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="265" parent="25" name="EX4">
+      <Position>13</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="266" parent="25" name="EX5">
+      <Position>14</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <key id="267" parent="25" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>ID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="268" parent="26" name="ID">
+      <Position>1</Position>
+      <DataType>varchar(32)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="269" parent="26" name="NAME">
+      <Position>2</Position>
+      <DataType>varchar(32)|0</DataType>
+    </column>
+    <column id="270" parent="26" name="PASSWORD">
+      <Position>3</Position>
+      <DataType>varchar(64)|0</DataType>
+    </column>
+    <column id="271" parent="26" name="CREATE_TIME">
+      <Position>4</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="272" parent="26" name="LAST_LOGIN_TIME">
+      <Position>5</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="273" parent="26" name="PHONE">
+      <Position>6</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="274" parent="26" name="REAL_NAME">
+      <Position>7</Position>
+      <Comment>真是姓名</Comment>
+      <DataType>varchar(128)|0</DataType>
+    </column>
+    <key id="275" parent="26" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>ID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="276" parent="27" name="USER_ID">
+      <Position>1</Position>
+      <DataType>varchar(32)|0</DataType>
+    </column>
+    <column id="277" parent="27" name="ROLE_ID">
+      <Position>2</Position>
+      <DataType>varchar(32)|0</DataType>
+    </column>
+    <column id="278" parent="28" name="HOSPTIAL_NAME">
+      <Position>1</Position>
+      <Comment>医院名称</Comment>
+      <DataType>varchar(128)|0</DataType>
+    </column>
+    <column id="279" parent="28" name="HOSPTAIL_ID">
+      <Position>2</Position>
+      <Comment>医院ID</Comment>
+      <DataType>varchar(32)|0</DataType>
+    </column>
+    <column id="280" parent="28" name="sum(TRADE_MONEY)">
+      <Position>3</Position>
+      <DataType>decimal(65,2)|0</DataType>
+    </column>
+    <column id="281" parent="29" name="HOSPTIAL_NAME">
+      <Position>1</Position>
+      <Comment>医院名称</Comment>
+      <DataType>varchar(128)|0</DataType>
+    </column>
+    <column id="282" parent="29" name="HOSPTAIL_ID">
+      <Position>2</Position>
+      <Comment>医院ID</Comment>
+      <DataType>varchar(32)|0</DataType>
+    </column>
+    <column id="283" parent="29" name="sum(TRADE_MONEY)">
+      <Position>3</Position>
+      <DataType>decimal(65,2)|0</DataType>
+    </column>
+  </database-model>
+</dataSource>

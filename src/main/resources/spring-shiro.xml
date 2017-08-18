@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd ">
+
+    <!-- shiro -->
+    <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
+
+    <!-- shiro安全核心 -->
+    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+        <!-- 配置验证用户的realm，当有多个验证realm时有属性realms -->
+        <property name="realm" ref="myRealm"/>
+        <!-- 配置缓存管理 -->
+        <property name="cacheManager" ref="cacheManager"/>
+        <property name="sessionManager" ref="sessionManager"/>
+    </bean>
+
+    <!-- 自定义Realm实现认证（登录）和授权（根据数据库角色给shiro添加角色或者权限
+       shiro才知道用户的权限，才能在filterChainDefinitions的url中过滤拦截）-->
+    <bean id="myRealm" class="com.hsyd.yycw.shiro.MyRealm">
+        <property name="cacheManager" ref="cacheManager"/>
+        <property name="credentialsMatcher">
+            <bean class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
+                <property name="hashAlgorithmName" value="MD5"/>
+                <property name="hashIterations" value="1024"/>
+            </bean>
+        </property>
+    </bean>
+
+    <!-- shrio核心拦截器 -->
+    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+        <property name="securityManager" ref="securityManager"/>
+        <property name="unauthorizedUrl" value="/WEB-INF/jsp/error/unauthorizad.jsp"/>
+        <!-- 配置过滤地址链-->
+        <property name="filterChainDefinitions">
+            <value>
+                #anon是匿名过滤器，用户不必登录即可访问的地址，必须放在其他过滤器前面
+                #myAuthc是自定义认证过滤器，对用户的登陆信息进行认证
+                #shiro 是优先匹配模式
+                #这是注释，拦截的语法 URL=拦截器[参数]。可以参看帮助文档看拦截器
+                #登出（注销），只需要用户访问这个url即可实现登出无需编写代码
+                <!--/css/** = anon-->
+                <!--/js/** = anon-->
+                <!--/fonts/** = anon-->
+                <!--/img/** = anon-->
+                <!--/login.do = anon-->
+                <!--/index.do = anon-->
+                <!--/homePage.jsp = anon-->
+                <!--/product/pageQuery.do = anon-->
+                <!--/product/detail.do = anon-->
+                <!--/product/types.do = anon-->
+                <!--/mySelf.do = anon-->
+                <!--/ours.do = anon-->
+                <!--/physical.do = anon-->
+                <!--/physical-flow.do = anon-->
+                <!--/physical-notice.do = anon-->
+                <!--/service.do = anon-->
+                <!--/user/register.do = anon-->
+                <!--/user/sendRegisterCode.do = anon-->
+                <!--/user/sendFindPassCode.do = anon-->
+                <!--/user/exists.do = anon-->
+                <!--/user/findPassword.do = anon-->
+                <!--/user/resetPass.do = anon-->
+                <!--/detail.do = anon-->
+                <!--/setMeal.do = anon-->
+                <!--/notify/** = anon-->
+                <!--/userApp/insert.do=anon-->
+                <!--/userApp/queryPerson.do =anon-->
+                <!--/orderApp/createOrder.do =anon-->
+                <!--/orderApp/toAlipay.do=anon-->
+                <!--/orderApp/cancel.do=anon-->
+                <!--/orderApp/detail.do=anon-->
+                <!--/orderApp/pageQuery.do=anon-->
+                <!--/frout/showSlide.do=anon-->
+                <!--/frout/showDown.do=anon-->
+                <!--/frout/showUp.do=anon-->
+                <!--/frout/showPage.do=anon-->
+                <!--/** = authc-->
+
+            </value>
+        </property>
+    </bean>
+
+    <!-- 会话Cookie模板，使用YD_SESSIONID_MALL存储sessionid -->
+    <bean id="sessionIdCookie" class="org.apache.shiro.web.servlet.SimpleCookie">
+        <property name="name" value="YD_SESSIONID_MALL"/>
+        <property name="httpOnly" value="true"/>
+        <property name="maxAge" value="12000"/>
+    </bean>
+
+    <!-- 会话ID生成器 -->
+    <bean id="sessionIdGenerator" class="org.apache.shiro.session.mgt.eis.JavaUuidSessionIdGenerator"/>
+
+    <!-- 会话DAO -->
+    <bean id="sessionDAO" class="org.apache.shiro.session.mgt.eis.EnterpriseCacheSessionDAO">
+        <property name="activeSessionsCacheName" value="shiro-activeSessionCache"/>
+        <property name="sessionIdGenerator" ref="sessionIdGenerator"/>
+    </bean>
+
+    <!-- 会话管理器 -->
+    <bean id="sessionManager" class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">
+        <property name="sessionDAO" ref="sessionDAO"/>
+        <property name="sessionIdCookieEnabled" value="true"/>
+        <property name="sessionIdCookie" ref="sessionIdCookie"/>
+    </bean>
+
+    <!-- 缓存管理器 -->
+    <bean id="cacheManager" class="org.apache.shiro.cache.MemoryConstrainedCacheManager"/>
+
+    <!-- 自定义的认证过滤器 -->
+    <!--<bean id="myAuthc" class="com.yada.wechatbank.shiro.MyAuthcFilter"/>
+    -->
+
+    <!--<bean id="simpleCookie" class="org.apache.shiro.web.servlet.SimpleCookie">
+
+    </bean>
+    <bean id="cookieRememberMeManager" class="org.apache.shiro.web.mgt.CookieRememberMeManager">
+        <property name="cookie" ref="simpleCookie"/>
+    </bean>
+
+    &lt;!&ndash; 用户授权信息Cache &ndash;&gt;
+    <bean id="cacheManager" class="org.apache.shiro.cache.MemoryConstrainedCacheManager" />
+-->
+</beans>

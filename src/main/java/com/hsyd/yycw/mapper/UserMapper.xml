@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hsyd.yycw.dao.UserDao" >
+  <resultMap id="BaseResultMap" type="com.hsyd.yycw.model.User">
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="role_id" property="roleId" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="role_name" property="roleName" jdbcType="VARCHAR" />
+    <result column="birth" property="birth" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="INTEGER" />
+    <result column="id_no" property="idNo" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="user_type" property="userType" jdbcType="INTEGER" />
+    <result column="del_status" property="delStatus" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="login_time" property="loginTime" jdbcType="TIMESTAMP" />
+    <result column="hospital_id" property="hospitalId" jdbcType="VARCHAR" />
+
+  </resultMap>
+
+  <sql id="base_column">
+    id,user_id,name,phone,password,birth,sex,id_no,user_type,del_status,create_time,update_time,login_time,hospital_id
+  </sql>
+
+  <!-- 查询用户消费金额 -->
+  <select id="selectUserByPrice" parameterType="java.lang.String" resultType="java.lang.Double">
+    select if(sum(mo.total) is null , 0 , sum(mo.total)) from m_order mo where mo.user_id =#{userId}
+  </select>
+
+  <!-- 查询用户关联体检人数 -->
+  <select id="selectUserByPerson" parameterType="java.lang.String" resultType="java.lang.Integer">
+    select count(mp.id) from m_person mp where mp.user_id=#{userId}
+  </select>
+
+  <!-- 查询用户（根据用户名） -->
+  <select id="selectUserByName" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select <include refid="base_column"/>
+    from m_user
+    where user_type = 0 and name = #{name}
+    AND del_status = 0
+  </select>
+
+  <!-- 查询用户（根据编号） -->
+  <select id="selectUserById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select <include refid="base_column"/>
+    from m_user
+    where user_type = 0 and id = #{id}
+    AND del_status = 0
+  </select>
+
+  <!-- 查询用户（根据用户编号） -->
+  <select id="getById" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select <include refid="base_column"/>
+    from m_user
+    where user_type = 0 AND user_id = #{userId}
+    AND del_status = 0
+  </select>
+
+  <!-- 查询用户（根据手机号） -->
+  <select id="selectUserByPhone" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select <include refid="base_column"/>
+    from m_user
+    where user_type = 0 and phone = #{phone}
+    AND del_status = 0
+  </select>
+
+  <!-- 登录查询 -->
+  <select id="login" resultMap="BaseResultMap">
+    select <include refid="base_column"/>
+    from m_user
+    where name = #{username} and password = #{password}
+  </select>
+
+  <!-- 更新登录时间 -->
+  <update id="updateLoginTime" parameterType="java.lang.String">
+    update m_user set login_time = now() where user_id = #{userId}
+  </update>
+
+  <!-- 更新用户消费金额 -->
+  <update id="updateAmount" parameterType="java.util.Map">
+    <![CDATA[
+      update m_user set amount = amount + #{price} where user_id = #{userId}
+    ]]>
+  </update>
+
+
+  <!-- 添加用户 -->
+  <insert id="insert" parameterType="com.hsyd.yycw.model.User" >
+    insert into m_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+        user_type,
+      <if test="delStatus != null" >
+        del_status,
+      </if>
+        create_time,
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="loginTime != null" >
+        login_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+       0,
+      <if test="delStatus != null" >
+        #{delStatus,jdbcType=INTEGER},
+      </if>
+        now(),
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="loginTime != null" >
+        #{loginTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+
+  <!-- 修改用户手机号 -->
+  <update id="updatePhone" parameterType="java.util.Map">
+    update m_user set phone = #{newPhone},password = #{password} where phone = #{phone}
+  </update>
+
+  <!-- 修改用户 -->
+  <update id="update" parameterType="com.hsyd.yycw.model.User" >
+    update m_user
+    <set >
+        name = #{name,jdbcType=VARCHAR},
+      <if test="birth != null and birth != ''" >
+        birth = #{birth,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=INTEGER},
+      </if>
+        id_no = #{idNo,jdbcType=VARCHAR},
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="delStatus != null" >
+        del_status = #{delStatus,jdbcType=INTEGER},
+      </if>
+        update_time = now(),
+      <if test="loginTime != null" >
+        login_time = #{loginTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where phone = #{phone}
+  </update>
+
+
+</mapper>

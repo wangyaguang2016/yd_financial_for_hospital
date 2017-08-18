@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hsyd.yycw.dao.RoleMapper" >
+    <resultMap id="BaseResultMap" type="com.hsyd.yycw.model.Role" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="role_name" property="roleName" jdbcType="VARCHAR" />
+        <result column="description" property="description" jdbcType="VARCHAR" />
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+        <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+        <result column="del_status" property="delStatus" jdbcType="INTEGER" />
+        <result column="user_id" property="userId" jdbcType="VARCHAR" />
+        <result column="user_type" property="userType" jdbcType="INTEGER" />
+    </resultMap>
+
+    <sql id="base_column">
+        id,role_name,description,create_time,update_time,del_status,user_type
+    </sql>
+
+    <!-- 查询所有角色 -->
+    <select id="selectRoleAll" resultMap="BaseResultMap">
+        select id,role_name from m_role
+    </select>
+    <!-- 查询角色 -->
+    <select id="selectRole" parameterType="com.hsyd.yycw.model.Role" resultMap="BaseResultMap">
+        select r.id,r.role_name,u.user_id,r.description,r.create_time,r.update_time,r.del_status,r.user_type
+        from m_role r
+        left join m_user_role u on u.role_id = r.id
+        where r.del_status = 0
+        <if test="roleName != null and roleName != ''">
+            and r.role_name = #{roleName}
+        </if>
+        <if test="userType != null">
+            and r.user_type = #{userType}
+        </if>
+        <if test="id != null">
+            and r.id = #{id}
+        </if>
+        <if test="userId != null">
+            and u.user_id = #{userId}
+        </if>
+    </select>
+
+
+</mapper>

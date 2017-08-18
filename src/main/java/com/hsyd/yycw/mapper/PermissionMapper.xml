@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hsyd.yycw.dao.PermissionMapper">
+    <resultMap id="BaseResultMap" type="com.hsyd.yycw.model.Permission">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="permission_name" property="permissionName" jdbcType="VARCHAR"/>
+        <result column="description" property="description" jdbcType="VARCHAR"/>
+        <result column="url" property="url" jdbcType="VARCHAR"/>
+        <result column="is_menu" property="isMenu" jdbcType="VARCHAR"/>
+        <result column="parent_id" property="parentId" jdbcType="INTEGER"/>
+        <result column="role_id" property="roleId" jdbcType="INTEGER"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
+        <result column="user_type" property="userType" jdbcType="INTEGER"/>
+    </resultMap>
+    <sql id="base_column">
+        id,permission_name,description,url,is_menu,parent_id,create_time,update_time,user_type
+    </sql>
+
+    <!-- 查询权限 -->
+    <select id="selectPermission" parameterType="com.hsyd.yycw.model.Permission" resultMap="BaseResultMap">
+        select p.id,p.permission_name,p.description,p.url,p.is_menu,
+        p.create_time,p.update_time,p.user_type,r.role_id
+        from m_permission p
+        inner join m_role_permission r on r.permission_id = p.id
+        where 1=1
+        <if test="permissionName != null and permissionName !=''">
+            and p.permission_name = #{permissionName}
+        </if>
+        <if test="id != null">
+            and p.id = #{id}
+        </if>
+        <if test="userType != null">
+            and p.user_type = #{userType}
+        </if>
+        <if test="url != null and url != ''">
+            and p.url = #{url}
+        </if>
+        <if test="roleId != null">
+            and r.role_id = #{roleId}
+        </if>
+    </select>
+
+    <insert id="insert" parameterType="com.hsyd.yycw.model.Permission">
+    insert into m_permission (id, permission_name, description, 
+      url, is_menu, parent_id,
+      create_time, update_time, user_type
+      )
+    values (#{id,jdbcType=INTEGER}, #{permissionName,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, 
+      #{url,jdbcType=VARCHAR}, #{isMenu,jdbcType=VARCHAR}, #{parentId,jdbcType=INTEGER},
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{userType,jdbcType=INTEGER}
+      )
+  </insert>
+
+    <!-- 添加权限 -->
+    <insert id="insertSelective" parameterType="com.hsyd.yycw.model.Permission">
+        insert into m_permission
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="permissionName != null">
+                permission_name,
+            </if>
+            <if test="description != null">
+                description,
+            </if>
+            <if test="url != null">
+                url,
+            </if>
+            <if test="isMenu != null">
+                is_menu,
+            </if>
+            <if test="parentId != null">
+                parent_id,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+            <if test="userType != null">
+                user_type,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="permissionName != null">
+                #{permissionName,jdbcType=VARCHAR},
+            </if>
+            <if test="description != null">
+                #{description,jdbcType=VARCHAR},
+            </if>
+            <if test="url != null">
+                #{url,jdbcType=VARCHAR},
+            </if>
+            <if test="isMenu != null">
+                #{isMenu,jdbcType=VARCHAR},
+            </if>
+            <if test="parentId != null">
+                #{parentId,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="userType != null">
+                #{userType,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+
+    <!-- 修改权限 -->
+    <update id="updateByPrimaryKeySelective" parameterType="com.hsyd.yycw.model.Permission">
+        update m_permission
+        <set>
+            <if test="permissionName != null">
+                permission_name = #{permissionName,jdbcType=VARCHAR},
+            </if>
+            <if test="description != null">
+                description = #{description,jdbcType=VARCHAR},
+            </if>
+            <if test="url != null">
+                url = #{url,jdbcType=VARCHAR},
+            </if>
+            <if test="isMenu != null">
+                is_menu = #{isMenu,jdbcType=VARCHAR},
+            </if>
+            <if test="parentId != null">
+                parent_id = #{parentId,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="userType != null">
+                user_type = #{userType,jdbcType=INTEGER},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.hsyd.yycw.model.Permission">
+    update m_permission
+    set permission_name = #{permissionName,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR},
+      is_menu = #{isMenu,jdbcType=VARCHAR},
+      
+parent_id = #{
+parentId,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      user_type = #{userType,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

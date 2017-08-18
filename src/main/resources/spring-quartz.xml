@@ -1,0 +1,48 @@
+<!--<?xml version="1.0" encoding="UTF-8"?>-->
+
+<!--<beans xmlns="http://www.springframework.org/schema/beans"-->
+       <!--xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"-->
+       <!--xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">-->
+
+    <!--&lt;!&ndash; 任务类 &ndash;&gt;-->
+    <!--<bean id="job" class="com.hsyd.yycw.service.impl.JobServiceImpl"></bean>-->
+
+    <!--&lt;!&ndash; job 工作类，工作类里定义了要周期性执行的方法 &ndash;&gt;-->
+    <!--<bean id="jobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">-->
+        <!--&lt;!&ndash; 调用的类（指定包含任务执行体的 Bean 实例） &ndash;&gt;-->
+        <!--<property name="targetObject">-->
+            <!--<ref bean="job"/>-->
+        <!--</property>-->
+        <!--&lt;!&ndash; 调用类中的方法（将指定 Bean 实例的某个特定方法包装成任务的执行体） &ndash;&gt;-->
+        <!--<property name="targetMethod">-->
+            <!--<value>renovateOrderStatus</value>-->
+        <!--</property>-->
+    <!--</bean>-->
+
+    <!--&lt;!&ndash; 任务调度的配置 &ndash;&gt;-->
+    <!--<bean id="trigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">-->
+        <!--&lt;!&ndash; 工作任务 &ndash;&gt;-->
+        <!--<property name="jobDetail">-->
+            <!--<ref bean="jobDetail"/>-->
+        <!--</property>-->
+        <!--&lt;!&ndash; cron 表达式[任务调度执行时间配置] &ndash;&gt;-->
+        <!--<property name="cronExpression">-->
+            <!--&lt;!&ndash; 每天中12点更新订单状态 &ndash;&gt;-->
+            <!--<value>${quartz.job.time}</value>-->
+        <!--</property>-->
+    <!--</bean>-->
+
+
+    <!--&lt;!&ndash; 启动触发器的配置开始 &ndash;&gt;-->
+    <!--&lt;!&ndash; 总管理类 &ndash;&gt;-->
+    <!--&lt;!&ndash; lazy-init="false" 表示容器启动的时候就会执行调度程序 &ndash;&gt;-->
+    <!--<bean id="schedulerFactoryBean" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">-->
+        <!--&lt;!&ndash; 要执行的定时任务 &ndash;&gt;-->
+        <!--<property name="triggers">-->
+            <!--<list>-->
+                <!--<ref bean="trigger"/>-->
+            <!--</list>-->
+        <!--</property>-->
+        <!--<property name="autoStartup" value="true"></property>-->
+    <!--</bean>-->
+<!--</beans>-->
